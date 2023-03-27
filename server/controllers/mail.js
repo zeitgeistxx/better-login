@@ -1,16 +1,29 @@
 import nodemailer from 'nodemailer'
 import Mailgen from 'mailgen'
+import mail from '../mailIDs.js'
+
+/** send email from ethereal account */
+// let nodeConfig = {
+//     host: "smtp.ethereal.email",
+//     port: 587,
+//     secure: false,
+//     auth: {
+//         user: 'juliana.schultz73@ethereal.email',
+//         pass: '9wDUVagGbzK3B2jsb9'
+//     }
+// }
 
 
+/** send mail from real account */
 let nodeConfig = {
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
+    service: 'gmail',
     auth: {
-        user: 'juliana.schultz73@ethereal.email',
-        pass: '9wDUVagGbzK3B2jsb9'
+        user: mail.EMAIL,
+        pass: mail.PASS
     }
 }
+
+
 
 let transporter = nodemailer.createTransport(nodeConfig)
 
@@ -37,7 +50,7 @@ export const registerMail = async (req, res) => {
     var emailBody = MailGenerator.generate(email)
 
     let message = {
-        from: 'juliana.schultz73@ethereal.email',
+        from: mail.EMAIL,
         to: userEmail,
         subject: subject || 'Signup Successful',
         html: emailBody
