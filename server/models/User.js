@@ -3,12 +3,12 @@ import mongoose from "mongoose"
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: [true, 'Please provide unique username'],
+        // required: [true, 'Please provide unique username'],
         unique: [true, 'Username exists']
     },
     password: {
         type: String,
-        required: [true, 'Please provide a password'],
+        // required: [true, 'Please provide a password'],
         unique: false
     },
     email: {
@@ -20,7 +20,8 @@ const UserSchema = new mongoose.Schema({
     lastName: { type: String },
     mobile: { type: Number },
     address: { type: String },
-    profile: { type: String }
+    profile: { type: String },
+    googleID: { type: String }
 },
     { timestamps: true }
 )

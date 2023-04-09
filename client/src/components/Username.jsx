@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import avatar from '../assets/profile.png'
 import { Toaster } from 'react-hot-toast'
@@ -26,6 +26,11 @@ const Username = () => {
       navigate('/password')
     }
   })
+
+  const googleAuth = async () => {
+    window.open(`${process.env.REACT_APP_SERVER_DOMAIN}/api/auth/google`, '_self')
+  }
+
 
   return (
     <div className='container mx-auto'>
@@ -55,6 +60,10 @@ const Username = () => {
               <span className='text-gray-400'>Not a Member <Link className='text-red-500' to='/register'>Register Now</Link></span>
             </div>
           </form>
+
+          <div className='flex justify-center'>
+            <button className={styles.btn} style={{background: '#171717', position: 'absolute'}} onClick={googleAuth}>Sign in with Google</button>
+          </div>
 
         </div>
       </div>
