@@ -27,9 +27,8 @@ router.route('/resetpassword').put(controller.verifyUser, controller.resetPasswo
 router.route('/auth/google').get(passport.authenticate('google', { scope: ['profile', 'email'] }))
 router.route('/auth/google/redirect').get(passport.authenticate('google',
     {
-        // successRedirect: process.env.CLIENT_URL,
         successRedirect: '/api/login/success',
-        failureRedirect: '/login/failed'
+        failureRedirect: '/api/login/failed'
     }
 ))
 router.route('/login/success').get((req, res) => {
@@ -62,9 +61,9 @@ router.route('/login/failed').get((req, res) => {
     })
 })
 router.route('/logout').get((req, res) => {
-    req.logout()
-    res.redirect(process.env.CLIENT_URL)
+    req.logout(() => res.redirect(process.env.CLIENT_URL))
 })
+
 
 
 
