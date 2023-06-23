@@ -28,3 +28,14 @@
 input[type='file']{
     display: none;
 }
+
+.logout{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    cursor: pointer;
+}
+
+.logout:hover{
+    @apply text-indigo-500;
+}

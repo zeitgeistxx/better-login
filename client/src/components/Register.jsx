@@ -43,6 +43,11 @@ const Register = () => {
   }
 
 
+  const googleAuth = async () => {
+    window.open(`${process.env.REACT_APP_SERVER_DOMAIN}/api/auth/google`, '_self')
+  }
+
+
   return (
     <div className='container mx-auto'>
 
@@ -77,6 +82,10 @@ const Register = () => {
               <span className='text-gray-400'>Already Registered? <Link className='text-red-500' to='/'> Login </Link></span>
             </div>
           </form>
+
+          <div className='flex justify-center'>
+            <button className={styles.btn} style={{background: '#171717', position: 'absolute'}} onClick={googleAuth}>Sign up with Google</button>
+          </div>
 
         </div>
       </div>
