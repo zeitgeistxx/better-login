@@ -14,6 +14,10 @@
     @apply border-4 border-indigo-500 shrink-0  w-[30%] rounded-3xl py-20 px-7 min-w-max;
 }
 
+#darkModeText{
+    color: whitesmoke;
+}
+
 .profile_img{
     @apply border-4 border-gray-100 w-[135px] rounded-full shadow-lg cursor-pointer;
     @apply hover:border-gray-200;
@@ -26,6 +30,12 @@
 
 .btn{
     @apply border bg-indigo-500 w-3/4 py-4 rounded-lg text-gray-50 text-xl shadow-sm text-center;
+}
+
+.darkModeBtn{
+    background: rgba(111, 111, 255, 0.918);
+    border: 1px solid white;
+    @apply w-3/4 py-4 rounded-lg text-gray-50 text-xl shadow-sm text-center;
 }
 
 .btn:hover{
@@ -52,4 +62,15 @@ input[type='file']{
 
 #logout:hover{
     @apply text-indigo-500;
+}
+
+.cookie{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 4%;
+}
+
+.cookie button:hover{
+    color: green;
 }

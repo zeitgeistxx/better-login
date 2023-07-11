@@ -2,12 +2,13 @@ import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN
+axios.defaults.withCredentials = true
 
 /* get username from token */
 export async function getUsername() {
     const token = localStorage.getItem('token')
     if (!token) return Promise.reject('Cannot find Token')
-    
+
     let decode = jwtDecode(token)
     return decode
 }
@@ -130,4 +131,19 @@ export async function resetPassword({ username, password }) {
     catch (error) {
         return Promise.reject(error)
     }
+}
+
+export async function setCookie() {
+    const {data} = await axios.get('/api/setCookie')
+    console.log(data)
+}
+
+export async function getCookies() {
+    const res = await axios.get('/api/getCookie')
+    console.log(res.data)
+}
+
+export async function deleteCookie() {
+    const res = await axios.get('/api/deleteCookie')
+    console.log(res.data)
 }

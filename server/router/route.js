@@ -31,7 +31,7 @@ router.route('/auth/google/redirect').get(passport.authenticate('google',
         failureRedirect: '/api/login/failed'
     }
 ))
-router.route('/login/success').get((req, res) => {
+ router.route('/login/success').get((req, res) => {
     if (req.user) {
         const token = jwt.sign(
             {
@@ -42,10 +42,10 @@ router.route('/login/success').get((req, res) => {
         )
         res.cookie('session_cookie', token,
             {
-                maxAge: 30000,
-                secure: true,
+                maxAge: 30 * 1000, // in ms
+                // secure: true,
                 httpOnly: true,
-                sameSite: 'lax'
+                // sameSite: 'lax'
             }
         )
         res.status(200).redirect(process.env.CLIENT_URL)
@@ -66,5 +66,18 @@ router.route('/logout').get((req, res) => {
 
 
 
+router.route('/setCookie').get((req, res) => {
+    res.cookie('cookie', 'Hello I am Test Cookie')
+    res.send('Cookie saved successfully')
+})
+
+router.route('/getCookie').get((req, res) => {
+    res.send(req.cookies.cookie)
+})
+
+router.route('/deleteCookie').get((req, res) => {
+    res.clearCookie('cookie')
+    res.send('Cookie deleted')
+})
 
 export default router

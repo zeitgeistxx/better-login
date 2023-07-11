@@ -6,6 +6,7 @@ import connectDB from "./database/Connect.js"
 import router from "./router/route.js"
 import passport from "passport"
 import session from "express-session"
+import cookieParser from "cookie-parser"
 
 
 const app = express()
@@ -27,7 +28,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 24 * 60 * 60 * 1000 }
 }))
-
+app.use(cookieParser())
 
 app.use(passport.initialize())
 app.use(passport.session())
