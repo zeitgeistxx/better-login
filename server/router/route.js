@@ -31,7 +31,7 @@ router.route('/auth/google/redirect').get(passport.authenticate('google',
         failureRedirect: '/api/login/failed'
     }
 ))
- router.route('/login/success').get((req, res) => {
+router.route('/login/success').get((req, res) => {
     if (req.user) {
         const token = jwt.sign(
             {
@@ -67,7 +67,7 @@ router.route('/logout').get((req, res) => {
 
 
 router.route('/setCookie').get((req, res) => {
-    res.cookie('cookie', 'Hello I am Test Cookie')
+    res.cookie('cookie', 'Hello I am Test Cookie', { httpOnly: true, secure: true })
     res.send('Cookie saved successfully')
 })
 
